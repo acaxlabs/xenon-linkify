@@ -1,5 +1,5 @@
 {
-  "name": "xenon-linkify-behavior",
+  "name": "xenon-linkify",
   "version": "1.0",
   "description": "turns plain text into linked html",
   "authors": [
@@ -14,14 +14,14 @@
     "pattern",
     "regex"
   ],
-  "main": "xenon-linkify-behavior.html",
+  "main": "xenon-linkify.html",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/acaxlabs/xenon-linkify-behavior.git"
+    "url": "git://github.com/acaxlabs/xenon-linkify.git"
   },
-  "license": "https://github.com/acaxlabs/xenon-linkify-behavior/blob/master/LICENSE.txt",
-  "homepage": "https://github.com/acaxlabs/xenon-linkify-behavior",
+  "license": "https://github.com/acaxlabs/xenon-linkify/blob/master/LICENSE.txt",
+  "homepage": "https://github.com/acaxlabs/xenon-linkify",
   "ignore": [],
     "dependencies": {
         "polymer": "Polymer/polymer#^1.2.0"
