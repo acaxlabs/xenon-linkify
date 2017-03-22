@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script src="../../webcomponentsjs/webcomponents.js"></script>
+        <link rel="import" href="../xenon-linkify.html"/>
+    </head>
+    <body>
+        <dom-module id="demo-element">
+            <template>
+                <div>The &lt;xenon-linkify&gt; component hyperlinks plain text content and adds carriage returns.</div>
+                <xenon-html-input label="Comment" value="{{value}}"></xenon-html-input>
+                <div>Output:</div>
+                <xenon-linkify>
+                    Now is the time for all good men
+                    to come to the aid of http://google.com.
+                    Contact support by calling 800-555-1212 or 
+                    emailing us at support@here.com.
+                    You can also try http://support.google.com
+                </xenon-linkify>
+            </template>
+            <script>
+                window.addEventListener('WebComponentsReady', function() {
+                    Polymer({
+                        is: "demo-element"
+                    });
+                 });
+            </script>
+        </dom-module>
+        <demo-element></demo-element>
+    </body>
+</html>

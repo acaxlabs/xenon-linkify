@@ -1,0 +1,18 @@
+<link rel="import" href="../polymer/polymer.html">
+<script>
+    window.ACAXLabs = window.ACAXLabs || {} ;
+    ACAXLabs.XenonLinkifyBehavior = {
+        addBreak: function(value) {
+            return value.replace(/\n/g, "<br/>");
+        }, 
+        linkUrl: function(value) {
+            return value.replace(/(https?:\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\?\/\w\.\-=]*)/g, '<a target="_blank" href="$&">$&</a>');
+        },
+        linkPhone: function(value) {
+            return value.replace(/\d{3}-\d{3}-\d{4}/g, '<a target="_blank" href="tel:$&">$&</a>');
+        },
+        linkEmail: function(value) {
+            return value.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '<a target="_blank" href="mailto:$&">$&</a>');
+        }
+    }
+</script>

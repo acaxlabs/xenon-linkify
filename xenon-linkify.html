@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="xenon-linkify-behavior.html">
+<dom-module id="xenon-linkify">
+    <template>
+        <div style="display:none"><content id="content"></content></div>
+        <div id="output"></div>
+    </template>
+    <script>
+    Polymer({
+        is:"xenon-linkify",
+        properties: {
+            noBreak: { type:Boolean, value: false },
+            noUrl: { type:Boolean, value: false },
+            noPhone: { type:Boolean, value: false },
+            noEmail: { type:Boolean, value: false }
+        },
+        behaviors: [
+            ACAXLabs.XenonLinkifyBehavior
+        ],
+        attached: function() {
+            var self = this;
+            Polymer.dom(this.$.content).observeNodes(function(changes){
+                var text = changes.addedNodes[0].data.trim();
+                if(!self.noBreak) text = self.addBreak(text);
+                if(!self.noUrl) text = self.linkUrl(text);
+                if(!self.noEmail) text = self.linkEmail(text);
+                if(!self.noPhone) text = self.linkPhone(text);
+                self.$.output.innerHTML = text;
+            });
+        }
+    });
+    </script>
+</dom-module>

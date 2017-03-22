@@ -1,0 +1,31 @@
+{
+  "name": "xenon-linkify-behavior",
+  "version": "1.0",
+  "description": "turns plain text into linked html",
+  "authors": [
+    "ACA[X]Labs"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "numeric",
+    "link",
+    "hyperlink",
+    "pattern",
+    "regex"
+  ],
+  "main": "xenon-linkify-behavior.html",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/acaxlabs/xenon-linkify-behavior.git"
+  },
+  "license": "https://github.com/acaxlabs/xenon-linkify-behavior/blob/master/LICENSE.txt",
+  "homepage": "https://github.com/acaxlabs/xenon-linkify-behavior",
+  "ignore": [],
+    "dependencies": {
+        "polymer": "Polymer/polymer#^1.2.0"
+    },
+     "devDependencies": {
+  }
+}
