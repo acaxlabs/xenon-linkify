@@ -1,8 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="xenon-linkify-behavior.html">
 <dom-module id="xenon-linkify">
-    <template>
-        <div style="display:none"><content id="content"></content></div>
+    <template strip-whitespace>
+        <div id="content"><content></content></div>
         <div id="output"></div>
     </template>
     <script>
@@ -17,16 +17,28 @@
         behaviors: [
             ACAXLabs.XenonLinkifyBehavior
         ],
-        attached: function() {
-            var self = this;
-            Polymer.dom(this.$.content).observeNodes(function(changes){
-                var text = changes.addedNodes[0].data.trim();
-                if(!self.noBreak) text = self.addBreak(text);
-                if(!self.noUrl) text = self.linkUrl(text);
-                if(!self.noEmail) text = self.linkEmail(text);
-                if(!self.noPhone) text = self.linkPhone(text);
-                self.$.output.innerHTML = text;
-            });
+        ready: function () {
+            var boundHandler = this._handleMutations.bind(this);
+            var observer = new MutationObserver(boundHandler);
+            var config = { attributes: true, childList: true, characterData: true };
+            var nodes = this.getEffectiveChildNodes();
+            for (var i = 0; i < nodes.length; i++) {
+                observer.observe(nodes[i], config);
+            }
+        },
+        _handleMutations: function (mutations) {
+            for (var i = 0; i < mutations.length; i++) {
+                this.$.output.innerHTML = this._linkify(mutations[i].target.textContent);
+                this.$.content.hidden = true;
+            }
+        },
+        _linkify: function(value) {
+            var text = value.trim();
+            if(!this.noBreak) text = this.addBreak(text);
+            if(!this.noUrl) text = this.linkUrl(text);
+            if(!this.noEmail) text = this.linkEmail(text);
+            if(!this.noPhone) text = this.linkPhone(text);
+            return text; 
         }
     });
     </script>
